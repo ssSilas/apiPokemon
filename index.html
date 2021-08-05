@@ -10,27 +10,32 @@
     <title>API TESTE</title>
 </head>
 
-<body>
-    <h1>Qual Pokemon você seria?</h1>
-
-    <form>
-        <div class="interfaceForm">
-            <p>Informe um ID entre 1 e 898:</p>
-            <input type="text" maxlength="3" id="idPokemon"
-                onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-
-            <button type="button" id="btn">Buscar</button>
-
-            <section>
-                <picture>
-                    <img id="imgPokemon" src="">
-                </picture>
-                <div id="respPokeName"></div>
-                <ul id="respAbilities">
-                </ul>
-            </section>
+<body class=" imgBackground">
+    <main class="ctnPage">
+        <div>
+            <h1 class="titleH1" >Api Pokemon</h1>
+            <p class="subtitleH1">Encontre o Pokemon por Id</p>
         </div>
-    </form>
+        <form>
+            <div class="interfaceForm">
+                <p class="formInstruction">Informe um ID entre 1 e 898:</p>
+                <div class="ctnInputBtn">
+                    <input class="inputForId" type="text" maxlength="3" id="idPokemon"
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <button type="button" id="btnForIdSearch">Buscar</button>
+                </div>
+                <section>
+                    <picture>
+                        <img id="imgPokemon" src="">
+                    </picture>
+        
+                    <div id="respPokeName"></div>
+                    <label id="describAbilities">Habilidades: </label>
+                    <ul id="respAbilities"></ul>
+                </section>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

@@ -3,25 +3,39 @@
   padding: 0;
 }
 body {
-  text-align: center;
-  background-image:url(../img/background_Page_Img.jpg);
   background-repeat: no-repeat;
   color: #ffff;
   font-family: 'Kanit', sans-serif;
 }
-h1 {
+.ctnPage{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.imgBackground{
+  background-image:url(../img/background_Page_Img.jpg);
+  background-color: #cccccc;
+  height: 100vh; width: 100vw;
+  background-position:bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.titleH1 {
   text-align: center;
-  font-size: xx-large;
-  padding: 10px 0;
+  font-size: 2.7rem;
+  flex-grow: 0.0;
+}
+.subtitleH1{
+  font-weight: 800;
+  font-size: 1.3rem;
 }
 form {
   position: relative;
-  top: 45%;left: 50%;
-  transform: translateX(-50%);
-  background-color: #979797;
-  height: 500px;width: 400px;
-  padding: 10px;
+  left: 10%;
+  height: 50vh; width: 25vw;
   border-radius: 20px;
+  margin: 5vh;
 }
 .interfaceForm {
   border-radius: 20px;
@@ -29,45 +43,55 @@ form {
   display: flex;
   flex-flow: wrap column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  padding: 2%
 }
-p {
+.formInstruction {
   font-weight: 800;
   font-size: 1.3rem;
 }
-input {
+.ctnInputBtn{
+  background-color: black;
+}
+.inputForId {
   font-size: 1.9rem;
   text-align: center;
   width: 150px;
-  border-radius: 10px;
+  border: none; border-radius: 10px;
   outline: none;
-  border: none;
+  top: 3%;
 }
-button {
-  font-size: larger;
+#btnForIdSearch {
+  position: relative;
+  font-size: 1.2rem;
   outline: none;
-  height: 30px;
-  width: 80px;
+  height: 35px; width: 80px;
   border-radius: 5px;
-  border: none;
+  border: none; 
+  bottom: 2%;
 }
 section{
-  flex-grow: 0.7;
-  background-color: #242323;
-  width: 95%;
+  text-align: center;
+  flex-grow: 0.9;
+  width: 90%;
   border-radius: 20px;
 }
-
+#describAbilities{
+  display: none;
+}
 /*Classes Ativadas Com JS após o Click no btn*/
 .namePokemon{
   font-size: 1.9rem;
-
 }
 .imgPokemon{
-  height: 200px;
-  width: 230px;
+  height: 19vh;
+  width:10vw;
+  border-radius: 60px;
+  margin-top: 10px;
+  background-image: linear-gradient(to bottom, #ef0707,#1e1818,#f2f2f2);
 }
 .ability{
-  background-color: cadetblue;
+  padding: 5px 10px 0;
+  font-weight: 600;
   display: block;
 }
