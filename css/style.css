@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  text-align: center;
+  background-image:url(../img/background_Page_Img.jpg);
+  background-repeat: no-repeat;
+  color: #ffff;
+  font-family: 'Kanit', sans-serif;
+}
+h1 {
+  text-align: center;
+  font-size: xx-large;
+  padding: 10px 0;
+}
+form {
+  position: relative;
+  top: 45%;left: 50%;
+  transform: translateX(-50%);
+  background-color: #979797;
+  height: 500px;width: 400px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.interfaceForm {
+  border-radius: 20px;
+  height: 100%; width: 100%;
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+p {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+input {
+  font-size: 1.9rem;
+  text-align: center;
+  width: 150px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+}
+button {
+  font-size: larger;
+  outline: none;
+  height: 30px;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+}
+section{
+  flex-grow: 0.7;
+  background-color: #242323;
+  width: 95%;
+  border-radius: 20px;
+}
+
+/*Classes Ativadas Com JS após o Click no btn*/
+.namePokemon{
+  font-size: 1.9rem;
+
+}
+.imgPokemon{
+  height: 200px;
+  width: 230px;
+}
+.ability{
+  background-color: cadetblue;
+  display: block;
+}
