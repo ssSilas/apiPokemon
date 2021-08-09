@@ -8,7 +8,7 @@ body {
 }
 .ctnPage {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
 }
@@ -24,23 +24,6 @@ body {
   font-size: 2.7rem; text-align: center;
   flex-grow: 0;
 }
-.subtitleH1 {
-  font-weight: 800; font-size: 1.3rem;
-}
-form {
-  position: relative;
-  left: 10%;
-  height: 400px; width: 370px;
-  margin: 5vh;
-}
-.interfaceForm {
-  border-radius: 20px;
-  height: 100%; width: 100%;
-  display: flex;
-  flex-flow: wrap column;
-  align-items: center;
-  justify-content: space-around;
-}
 .formInstruction {
   font-weight: 800; font-size: 1.3rem;
 }
@@ -50,6 +33,7 @@ form {
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
+  margin: 10px 0;
 }
 .inputForId {
   font-size: 1.9rem;text-align: center;
@@ -65,30 +49,54 @@ form {
   border-radius: 5px;
   border: none;
 }
-section {
-  text-align: center;
-  flex-grow: 0.9;
-  width: 90%;
+.interfaceForm {
+  position: relative;
   border-radius: 20px;
+  height: 300px; width: 600px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
-#describAbilities {
-  display: none;
+.ctnDataPokemon{
+  flex-grow: 1.5;
 }
+.backgPokebola{
+  position: relative;
+  height: 30vh; width: 13.7vw;
+  background: url("../img/Pokebola/pokebola_Orig2.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.7;
+}
+.ctnDescription{
+  height:200px ;width: 400px;
+  margin: 50px 0;
+}
+.descriptionData{
+  
+  margin: 5px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  list-style-type: none;
+  display: block;
+}
+
 /*Classes Ativadas Com JS após o Click no btn*/
 .namePokemon {
   font-size: 1.9rem;
+  margin-top: 10px 0;
+  width: 10vw;
+  text-transform: capitalize;
 }
 .imgPokemon {
-  height: 19vh; width: 10vw;
-  border-radius: 60px;
-  margin-top: 10px;
-  background: url("../img/Pokebola/pokebola_Orig2.png");
-  background-position: center;
-  background-size: cover;
+  position: relative;
   height: 30vh; width: 13.7vw;
+  border-radius: 60px;
+  bottom: 50%;
 }
 .ability {
-  padding: 5px 10px 0;
+  font-size: 1.5rem;
   font-weight: 600;
-  display: block;
+  list-style-type: none;
+  text-transform: capitalize;
 }

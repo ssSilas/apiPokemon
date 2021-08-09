@@ -13,31 +13,33 @@
 <body class=" imgBackground">
     <main class="ctnPage">
         <div>
-            <h1 class="titleH1" >Api Pokemon</h1>
-            <p class="subtitleH1">Encontre o Pokemon por Id</p>
-        </div>
-        <form>
-            <div class="interfaceForm">
-                <p class="formInstruction">Informe um ID entre 1 e 898:</p>
+            <h1 class="titleH1">Api Pokemon</h1>
+            <p class="formInstruction">Informe um ID entre 1 e 898:</p>
 
-                <div class="ctnInputBtn">
-                    <input class="inputForId" type="text" maxlength="3" id="idPokemon"
-                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-
-                    <button type="button" id="btnForIdSearch" value>GO</button>
-                </div>
-
-                <section>
-                    <picture>
-                        <img id="imgPokemon" src="">
-                    </picture>
-        
-                    <div id="respPokeName"></div>
-                    <label id="describAbilities">Habilidades:</label>
-                    <ul id="respAbilities"></ul>
-                </section>
+            <div class="ctnInputBtn">
+                <input class="inputForId" type="text" maxlength="3" id="idPokemon"
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                <button type="button" id="btnForIdSearch" value>GO</button>
             </div>
-        </form>
+        </div>
+
+        <div class="interfaceForm">
+            <picture>
+                <div class="backgPokebola"></div>
+                <img id="imgPokemon" src="">
+            </picture>
+            <section class="ctnDataPokemon">
+                
+                <p id="respPokeName"></p>
+
+                <div class="ctnDescription">
+                    <label class="descriptionData" id="describeType">Tipo:</label>
+                    <ul id="respType"></ul>
+                    <label class="descriptionData" id="describeAbilities">Habilidades:</label>
+                    <ul id="respAbilities"></ul>
+                </div>
+            </section>
+        </div>
     </main>
 </body>
 
