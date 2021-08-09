@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="index.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>API TESTE</title>
+    <title>Api Pokemon</title>
 </head>
 
 <body class=" imgBackground">
@@ -19,18 +19,21 @@
         <form>
             <div class="interfaceForm">
                 <p class="formInstruction">Informe um ID entre 1 e 898:</p>
+
                 <div class="ctnInputBtn">
                     <input class="inputForId" type="text" maxlength="3" id="idPokemon"
                         onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                    <button type="button" id="btnForIdSearch">Buscar</button>
+
+                    <button type="button" id="btnForIdSearch" value>GO</button>
                 </div>
+
                 <section>
                     <picture>
                         <img id="imgPokemon" src="">
                     </picture>
         
                     <div id="respPokeName"></div>
-                    <label id="describAbilities">Habilidades: </label>
+                    <label id="describAbilities">Habilidades:</label>
                     <ul id="respAbilities"></ul>
                 </section>
             </div>
