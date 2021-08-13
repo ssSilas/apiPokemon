@@ -21,35 +21,45 @@ body {
   background-size: cover;
 }
 .titleH1 {
-  font-size: 2.7rem; text-align: center;
+  font-size: 2.7rem;
+  text-shadow:0.1em 0.1em #09747e54;
+  text-align: center;
   flex-grow: 0;
+  padding-top:10px ;
 }
 .formInstruction {
-  font-weight: 800; font-size: 1.3rem;
+  font-weight: 600; font-size: 1.3rem;
+  text-align: center;
+  text-shadow:0.1em 0.1em #09747e54;
 }
 .ctnInputBtn {
-  height:47px; width: 300px;
+  height:13vh; width:25vw;
   display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 10px 0;
+  flex-flow: row wrap;
+  align-items:flex-end ;
+  justify-content: space-evenly;
+  margin: 10px 0 0 0;
 }
 .inputForId {
   font-size: 1.9rem;text-align: center;
   height: 40px; width: 130px;
-  border: none; border-radius: 10px;
+  border-radius: 10px;border: 0;
+  box-shadow:0.1em 0.1em #0000006c;
   outline: none;
 }
-#btnForIdSearch {
+.btnForIdSearch {
   position: relative;
-  font-size: 1.4rem;
-  outline: none;
+  font-size: 1.4rem;font-weight: 600;
   height: 40px; width: 90px;
-  border-radius: 5px;
-  border: none;
+  border-radius: 5px; border: 0;
+  box-shadow:0.1em 0.1em #0000006c;
+  outline: none;
+}
+.msgError{
+  height: 3vh; width: 25vw;
 }
 .interfaceForm {
+  background-color: #38383871;
   position: relative;
   border-radius: 20px;
   height: 300px; width: 600px;
@@ -66,37 +76,45 @@ body {
   background: url("../img/Pokebola/pokebola_Orig2.png") no-repeat;
   background-position: center;
   background-size: cover;
+  top: 10%;
   opacity: 0.7;
 }
 .ctnDescription{
   height:200px ;width: 400px;
   margin: 50px 0;
 }
+.liForReturnApi{
+  list-style-type: none;
+}
 .descriptionData{
-  
   margin: 5px 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   list-style-type: none;
   display: block;
 }
-
 /*Classes Ativadas Com JS após o Click no btn*/
 .namePokemon {
-  font-size: 1.9rem;
-  margin-top: 10px 0;
-  width: 10vw;
+  font-size: 1.9rem;font-weight: 600;
+  width: 15vw;
+  padding: 10px 0 0 0;
   text-transform: capitalize;
 }
 .imgPokemon {
   position: relative;
   height: 30vh; width: 13.7vw;
   border-radius: 60px;
-  bottom: 50%;
+  bottom: 40%;
 }
 .ability {
   font-size: 1.5rem;
   font-weight: 600;
   list-style-type: none;
   text-transform: capitalize;
+}
+.msgErrorId{
+  display: block;
+  font-size: 0.9rem;font-weight: 600;
+  text-align: center;
+  color: #e90101;
 }
