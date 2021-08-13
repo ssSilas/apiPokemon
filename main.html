@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="requestsApi.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Api Pokemon</title>
+</head>
+
+<body class=" imgBackground">
+    <main class="ctnPage">
+        <header>
+            <h1 class="titleH1">Api Pokemon</h1>
+            <p class="formInstruction">Informe um ID entre 1 e 898:</p>
+
+            <form class="ctnInputBtn">
+                <input class="inputForId" type="text" maxlength="3" id="idPokemon"
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                <button type="button" class="btnForIdSearch" id="btnForIdSearch" >GO</button>
+                <div class="msgError" id="msgError"></div>
+            </form>
+        </header>
+
+        <div class="interfaceForm">
+            <picture>
+                <div class="backgPokebola"></div>
+                <img id="imgPokemon" src="">
+            </picture>
+
+            <section class="ctnDataPokemon">
+                <p id="respPokeName"></p>
+
+                <div class="ctnDescription">
+                    <label class="descriptionData" id="describeType">Tipo:</label>
+                    <ul>
+                        <li class="liForReturnApi" id="returnApiType"></li>
+                    </ul>
+                    <label class="descriptionData" id="describeAbilities">Habilidades:</label>
+                    <ul>
+                        <li class="liForReturnApi" id='returnApiAbilities'></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
