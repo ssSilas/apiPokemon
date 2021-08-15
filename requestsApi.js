@@ -32,11 +32,12 @@ addEventListener('load', () => {
                 img.classList.add('imgPokemon');
                 return img;
             }
+
             const getNamePokemon = async () => {
                 const response = await fetch(url);
                 const data = await response.json();
                 const pokeName = document.getElementById('respPokeName');
-                
+
                 pokeName.innerHTML = JSON.stringify(data.name).replace(/"/g, "");
                 pokeName.classList.add('namePokemon');
             }
@@ -53,32 +54,29 @@ addEventListener('load', () => {
                 })
                 const convertTypeForString = ((accumulator) => {
                     const arrString = [];
-                    acc.map((types) => { arrString.push(types.type.name) });
+                    accumulator.map((types) => { arrString.push(types.type.name) });
                     liForTypeString.innerText = arrString.join(" | ");
                     liForTypeString.classList.add('ability');
                 })
                 convertTypeForString(acc);
             }
+            
             const getNameAbilities = async () => {
                 const response = await fetch(url);
                 const data = await response.json();
-
                 const liForAbilityString = document.getElementById('returnApiAbilities');
+
+                const acc = [];
                 Object.keys(data.abilities).map((obj, index) => {
                     const nameAbilityString = data.abilities[index].ability.name;
-
-                    const convertAbilityForString = ((li) => {
-                        const addText = JSON.stringify(li);
-                        let acc = "";
-                        acc = acc + addText
-                        liForAbilityString.innerText = acc.replace(/['"]/g, "");
-                        liForAbilityString.classList.add('ability');
-
-                        return liForAbilityString;
-                    })
-
-                    return convertAbilityForString(nameAbilityString);
+                    acc.push(nameAbilityString);
                 })
+                const convertAbilityForString = ((accumulator) => {
+                    liForAbilityString.innerText = accumulator.join(" | ");
+                    liForAbilityString.classList.add('ability');
+                    return liForAbilityString;
+                })
+                convertAbilityForString(acc);
             }
             getPhotoPokemon();
             getNamePokemon();
@@ -87,8 +85,8 @@ addEventListener('load', () => {
         }
         requestsApi();
     })
+    //Evento para acionar butão usando "Enter"
+    const btn = document.querySelector("#btnForIdSearch");
+    document.addEventListener("keypress", 
+    function(e) {if(e.key === 'Enter') btn.click();});
 })
-
-
-
-
