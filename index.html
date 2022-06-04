@@ -15,22 +15,25 @@
     <main class="ctnPage">
         <header>
             <h1 class="titleH1">Api Pokemon</h1>
-            <p class="formInstruction">Informe um ID entre 1 e 898:</p>
+            <p class="formInstruction">Informe um ID entre 1 e 898 ou o nome do pokemon desejado:</p>
 
-            <form class="ctnInputBtn">
-                <input class="inputForId" type="text" maxlength="3" id="idPokemon"
-                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+            <form class="ctnInputBtn" id="ctnInputBtn">
+                <input class="inputForId" id="inputForId" name="inputForId" type="text" maxlength="3"
+                    onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="ID">
+
+                <input class="inputForNome" id="inputForNome" name="inputForNome" type="text" maxlength="15" placeholder="NOME">
+
                 <button type="button" class="btnForIdSearch" id="btnForIdSearch" >GO</button>
-                <div class="msgError" id="msgError"></div>
             </form>
+            <div class="msgError" id="msgError"></div>
         </header>
 
         <div class="interfaceForm">
             <picture>
                 <div class="backgPokebola"></div>
-                <img id="imgPokemon" src="">
+                <img id="imgPokemon" value = "0" src="">
             </picture>
-
+            
             <section class="ctnDataPokemon">
                 <p id="respPokeName"></p>
 
@@ -39,6 +42,7 @@
                     <ul>
                         <li class="liForReturnApi" id="returnApiType"></li>
                     </ul>
+
                     <label class="descriptionData" id="describeAbilities">Habilidades:</label>
                     <ul>
                         <li class="liForReturnApi" id='returnApiAbilities'></li>

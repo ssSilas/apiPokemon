@@ -1,92 +1,141 @@
-addEventListener('load', () => {
-    const idPokemon = document.getElementById('idPokemon');
-    const btnSearch = document.getElementById('btnForIdSearch');
+addEventListener("load", () => {
+  const btnSearch = document.getElementById("btnForIdSearch");
+  const inputForId = document.getElementById("inputForId");
+  const inputForNome = document.getElementById("inputForNome");
+  const img = document.getElementById("imgPokemon");
+  let data;
+  //events
+  btnSearch.addEventListener("click", () => {
+    requestsApi();
+  });
 
-    btnSearch.addEventListener('click', () => {
-        const requestsApi = () => {
-            //tratamento de erros no ID informado.
-            const localMsgError = document.getElementById('msgError');
-            try {
-                const idValid = idPokemon.value >= 1 && idPokemon.value <= 898;
-                const idEmpty = idPokemon.value == '' || idPokemon.value == ' ' ||
-                    idPokemon.value == '  ';
+  img.addEventListener("click", (e) => {
+    console.log(e);
+    // console.log(data);
+    const img1 = data.sprites?.front_default;
+    const img2 = data.sprites.other.dream_world.front_default;
 
-                if (idEmpty) { throw "Nenhum valor foi informado" }
-                else if (!idValid) { throw "Numero inválido! Informe um ID entre 1 e 898" }
-                localMsgError.innerText = "";
-            } catch (error) {
-                localMsgError.classList.add('msgErrorId')
-                localMsgError.innerText = error;
-                return;
-            }
+    if (img.value == 1) {
+        img.setAttribute("src", img2);
+        img.value = 0
+    } else {
+        img.setAttribute("src",img1)
+        img.value = 1
+    }
 
-            const stringOfId = String(idPokemon.value);
-            const url = `https://pokeapi.co/api/v2/pokemon/${stringOfId}`;
+  });
+  
+  inputForId.addEventListener("change", (e) => {
+    inputForNome.disabled = true;
+    inputForNome.value = "";
+    if (inputForId.value == "") {
+      inputForNome.disabled = false;
+    }
+  });
 
-            const getPhotoPokemon = async () => {
-                const response = await fetch(url);
-                const data = await response.json();
-                const img = document.getElementById('imgPokemon');
+  inputForNome.addEventListener("change", (e) => {
+    inputForId.disabled = true;
+    inputForId.value = "";
+    if (inputForNome.value == "") {
+      inputForId.disabled = false;
+    }
+  });
 
-                img.setAttribute('src', data.sprites.front_default);
-                img.classList.add('imgPokemon');
-                return img;
-            }
+  const resetInputs = () => {
+    inputForId.value = "";
+    inputForId.disabled = false;
+    inputForNome.value = "";
+    inputForNome.disabled = false;
+  }
 
-            const getNamePokemon = async () => {
-                const response = await fetch(url);
-                const data = await response.json();
-                const pokeName = document.getElementById('respPokeName');
+  //Evento para acionar butão usando "Enter"
+  const btn = document.querySelector("#btnForIdSearch");
+  document.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") btn.click();
+  });
 
-                pokeName.innerHTML = JSON.stringify(data.name).replace(/"/g, "");
-                pokeName.classList.add('namePokemon');
-            }
 
-            const getType = async () => {
-                const response = await fetch(url);
-                const data = await response.json();
-                const liForTypeString = document.getElementById('returnApiType');
+  //requests
+  const requestsApi = async () => {
+    //tratamento de erros no ID informado.
+    const localMsgError = document.getElementById("msgError");
+    let getBy;
+    try {
+        getBy = inputForId.disabled == true ? inputForNome.value : inputForId.value;
 
-                const acc = [];
-                Object.keys(data.types).map((obj) => {
-                    const types = data.types;
-                    acc.push(types[obj]);
-                })
-                const convertTypeForString = ((accumulator) => {
-                    const arrString = [];
-                    accumulator.map((types) => { arrString.push(types.type.name) });
-                    liForTypeString.innerText = arrString.join(" | ");
-                    liForTypeString.classList.add('ability');
-                })
-                convertTypeForString(acc);
-            }
-            
-            const getNameAbilities = async () => {
-                const response = await fetch(url);
-                const data = await response.json();
-                const liForAbilityString = document.getElementById('returnApiAbilities');
+      if (getBy == null || getBy == '' ) {
+        throw "Valor inválido! Verifique se os dados informado estão corretos";
+      }
+      localMsgError.innerText = "";
+    } catch (error) {
+      localMsgError.classList.add("msgErrorId");
+      localMsgError.innerText = error;
+      return;
+    }
 
-                const acc = [];
-                Object.keys(data.abilities).map((obj, index) => {
-                    const nameAbilityString = data.abilities[index].ability.name;
-                    acc.push(nameAbilityString);
-                })
-                const convertAbilityForString = ((accumulator) => {
-                    liForAbilityString.innerText = accumulator.join(" | ");
-                    liForAbilityString.classList.add('ability');
-                    return liForAbilityString;
-                })
-                convertAbilityForString(acc);
-            }
-            getPhotoPokemon();
-            getNamePokemon();
-            getType();
-            getNameAbilities();
-        }
-        requestsApi();
-    })
-    //Evento para acionar butão usando "Enter"
-    const btn = document.querySelector("#btnForIdSearch");
-    document.addEventListener("keypress", 
-    function(e) {if(e.key === 'Enter') btn.click();});
-})
+    const stringOfId = getBy.toLowerCase().trim();
+    const url = `https://pokeapi.co/api/v2/pokemon/${stringOfId}`;
+
+    const response = await fetch(url);
+    data = await response.json();
+
+    getPhotoPokemon(data);
+    getNamePokemon(data);
+    getType(data);
+    getNameAbilities(data);
+    resetInputs(data);
+  };
+
+
+//services
+  const getPhotoPokemon = (data, img = 0) => {
+    const imgTag = document.getElementById("imgPokemon");
+    let spritefront = data.sprites.front_default
+
+    imgTag.setAttribute("src", spritefront);
+    imgTag.classList.add("imgPokemon");
+    return imgTag;
+  };
+
+  const getNamePokemon = (data) => {
+    const pokeName = document.getElementById("respPokeName");
+    pokeName.innerHTML = JSON.stringify(data.name).replace(/"/g, "");
+    pokeName.classList.add("namePokemon");
+  };
+
+  const getType = (data) => {
+    const liForTypeString = document.getElementById("returnApiType");
+
+    const acc = [];
+    Object.keys(data.types).map((obj) => {
+      const types = data.types;
+      acc.push(types[obj]);
+    });
+    const convertTypeForString = (accumulator) => {
+      const arrString = [];
+      accumulator.map((types) => {
+        arrString.push(types.type.name);
+      });
+      liForTypeString.innerText = arrString.join(" | ");
+      liForTypeString.classList.add("ability");
+    };
+    convertTypeForString(acc);
+  };
+
+  const getNameAbilities = (data) => {
+    const liForAbilityString = document.getElementById("returnApiAbilities");
+
+    const acc = [];
+    Object.keys(data.abilities).map((obj, index) => {
+      const nameAbilityString = data.abilities[index].ability.name;
+      acc.push(nameAbilityString);
+    });
+    const convertAbilityForString = (accumulator) => {
+      liForAbilityString.innerText = accumulator.join(" | ");
+      liForAbilityString.classList.add("ability");
+      return liForAbilityString;
+    };
+    convertAbilityForString(acc);
+  };
+
+});
